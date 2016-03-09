@@ -3,12 +3,14 @@
 <% stylesheet_link_tag    'sessions', media: 'all', 'data-turbolinks-track' => true %>
 
 <style>
-body{
-  background-image: url('fridge-ed8a64f8f0ef5e90803242adcc1874343004c242c35b827b6f0429503ab1c58c.png');
+/*body{
+  background-image: url('fridge-ed8a64f8f0ef5e90803242adcc1874343004c242c35b827b6f0429503ab1c58c.pnge');
   background-size: cover;
   background-repeat: no-repeat;
-}
+}*/
 </style>
+<div>
+<div class="testing"> test test</div>
 <div class="log_in_container">
   <h2>Log in</h2>
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

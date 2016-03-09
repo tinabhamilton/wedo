@@ -25,6 +25,12 @@
 html {
     font-family: "Lucida Sans", sans-serif;
 }
+.tetsing{
+  background-image: url('fridge-ed8a64f8f0ef5e90803242adcc1874343004c242c35b827b6f0429503ab1c58c.pnge');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 300px;
+}
 .header {
     background-color: #87bb8d;
     /*border: 3px solid;*/

@@ -17,6 +17,7 @@ class ItemsController < ApplicationController
     @items = Item.where(:list_id => params[:id])
     @item = Item.new
     @item.list_id = params[:id]
+    @list = List.find(params[:id])
   end
 
   # GET /items/1/edit

@@ -78,7 +78,7 @@ class ListsController < ApplicationController
   # DELETE /lists/1
   # DELETE /lists/1.json
   def destroy
-    @shared_lists = ShareList.all
+    @shared_lists = SharedList.all
     @list.destroy
     @list.items.each do |item|
         item.destroy

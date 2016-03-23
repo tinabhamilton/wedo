@@ -2,29 +2,23 @@
 <% content_for :head do  %>
 <% stylesheet_link_tag    'sessions', media: 'all', 'data-turbolinks-track' => true %>
 
-<style>
-body{
-  background-image: url('sign_up_splash-1c399325bc242058e06d3ffb2ba24d2c918b9d178e623e4f970f038ff9247ae6.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-</style>
-<div class="log_in_container">
-  <h2>Log in</h2>
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+  <div class="log_in_container">
+    <h2>Log in</h2>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email, required: false, autofocus: true %>
+      <%= f.input :password, required: false %>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Log in" %>
+  <%= link_to "Sign Up", new_user_registration_path %>
+    </div>
+  <% end %>
+  </div>
+  <div class="footer">
+  <p>WeDo - Lifes To Do List App &#169 Tech Talent South</p>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-<%= link_to "Sign Up", new_user_registration_path %>
-  </div>
-<% end %>
-</div>
-<div class="footer">
-<p>WeDo - Lifes To Do List App &#169 Tech Talent South</p>
-</div>
 <% end %>

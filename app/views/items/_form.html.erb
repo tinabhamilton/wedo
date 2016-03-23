@@ -1,4 +1,4 @@
-<% if current_user.email == @list.user.email%>
+<% if current_user.id == @list.user_id %> 
   <%= simple_form_for(@item) do |f| %>
     <%= f.error_notification %>
 
@@ -20,4 +20,4 @@
 
       <% end %>
     
-<% end %>
+<% end  %> 

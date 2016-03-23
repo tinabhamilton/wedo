@@ -13,7 +13,7 @@
   <% if  current_user.email == list.user.email  %>
     <div class="panel panel-<%= list.user.email == current_user.email ? 'success' : 'warning' %>">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= list.name %> | <%= list.category.name %></h3>
+      <h3 class="panel-title"> <%= list.name  %> | <%=  list.category.name %> </h3> 
       </div>
     <div class="panel-body">
       <div class="btn-group" role="group" aria-label="...">
@@ -66,14 +66,14 @@
 <h3>Your Calendar</h3>
 
 <%= month_calendar events: @lists do |date, lists| %>
-<%= date %>
-
-<% lists.each do |lists|  %>
-  <div>
-    <%= link_to lists.name, lists %>
-  </div>
-<% end %>
-
+  <%= date %>
+  <% lists.each do |lists|  %>
+    <% if current_user.id == lists.user_id %>
+      <div>
+        <%= link_to lists.name, lists %>
+      </div>
+    <% end %>
+  <% end %>
 <% end %>
   
 

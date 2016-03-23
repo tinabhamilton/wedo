@@ -6,14 +6,38 @@
 <% 	
 	tops = [120,130,280,360,440,520,200,400,350]
 	lefts = [100,200,250,200,120,100,180,230,100] 
-	@notes = Note.all 
+	@notes = Note.all
+	@active_notes = []
 %>
+
+
+<% @friend_notes = Note.all %>
+<% @friends = current_user.active_friends %>
+  <% @friends.each do |friend| %>
+		<% @friend_notes.each do |friend_note| %>
+			<% if friend_note.user_id.to_i == friend.id.to_i %>
+			<% @active_notes.push(friend_note) %>
+			<% end %>
+		<% end %>
+  <% end %>
+ 
+
+
+
 <% @notes.each_with_index do |note,index| %>
-	<%= ("<div class='fridge-note note' id='#{note.id}'" + 
-			"style='top:#{tops[index]}px; left:#{lefts[index]}px;' " + 
-			"data-msg='#{html_escape(note.content)}'> " + 
-				"<a data-confirm='are you sure?' rel='nofollow' data-method='delete' href='/notes/#{note.id}'>" +
-					"<span class='glyphicon glyphicon-remove'><span> " +
-				"</a>" +
-		"</div>").html_safe %>
+	<% if current_user.id.to_i == note.user_id.to_i%>
+	<% @active_notes.push(note) %>
+	<% end %>
 <% end %>
+
+<% @active_notes.each_with_index do |note, index| %>
+	<%= ("<div class='fridge-note note' id='#{note.id}'" + 
+				"style='top:#{tops[index]}px; left:#{lefts[index]}px;' " + 
+				"data-msg='#{html_escape(note.content)}'> " + 
+					"<a data-confirm='are you sure?' rel='nofollow' data-method='delete' href='/notes/#{note.id}'>" +
+						"<span class='glyphicon glyphicon-remove'><span> " +
+					"</a>" +
+			"</div>").html_safe %>
+<% end %>
+
+
